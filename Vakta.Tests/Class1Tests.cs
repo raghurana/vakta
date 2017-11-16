@@ -11,9 +11,8 @@ namespace Vakta.Tests
         public async Task GetTop5HackerNewsItems()
         {
             var sut = new Class1();
-            var links = await sut.GetItems(5);
 
-            Assert.AreEqual(5, links.Count);
+            var result = await sut.Run();
         }
     }
 }
