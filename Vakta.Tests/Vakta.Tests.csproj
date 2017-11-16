@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vakta.Core\Vakta.Core.csproj">
+      <Project>{27a4aaaa-8f3f-41ac-9b17-2eb8b08474c4}</Project>
+      <Name>Vakta.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

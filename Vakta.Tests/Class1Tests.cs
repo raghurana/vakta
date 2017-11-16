@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading.Tasks;
+using NUnit.Framework;
 using Vakta.Core;
 
 namespace Vakta.Tests
@@ -7,10 +8,12 @@ namespace Vakta.Tests
     public class Class1Tests
     {
         [Test]
-        public void GetTop5HackerNewsItems()
+        public async Task GetTop5HackerNewsItems()
         {
             var sut = new Class1();
-            var links = sut.GetItems(5);
+            var links = await sut.GetItems(5);
+
+            Assert.AreEqual(5, links.Count);
         }
     }
 }
