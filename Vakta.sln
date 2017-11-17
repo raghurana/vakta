@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.Core", "Vakta.Core\Vakta.Core.csproj", "{27A4AAAA-8F3F-41AC-9B17-2EB8B08474C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.Tests", "Vakta.Tests\Vakta.Tests.csproj", "{00C86B5D-D8DE-4BB1-BCBB-5F6D44BD6ABE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.AzureFunctions", "Vakta.AzureFunctions\Vakta.AzureFunctions.csproj", "{0700930F-CFD1-480D-A3C2-072C64E7DBE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{00C86B5D-D8DE-4BB1-BCBB-5F6D44BD6ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00C86B5D-D8DE-4BB1-BCBB-5F6D44BD6ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00C86B5D-D8DE-4BB1-BCBB-5F6D44BD6ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0700930F-CFD1-480D-A3C2-072C64E7DBE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0700930F-CFD1-480D-A3C2-072C64E7DBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0700930F-CFD1-480D-A3C2-072C64E7DBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0700930F-CFD1-480D-A3C2-072C64E7DBE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08BEBB5E-ABA0-417E-A4FE-CACA6D8A4421}
 	EndGlobalSection
 EndGlobal
