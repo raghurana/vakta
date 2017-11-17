@@ -1,3 +1,4 @@
+using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -30,6 +31,12 @@ namespace Vakta.AzureFunctions
             var summaryService = new SummaryService(summaryApiUrl, summaryApiKey);
             var summary = summaryService.GetSummaryForHit(hit);
             
+            var storageConnectionString = ConfigurationManager.AppSettings["StorageConnectionString"];
+            
+            var repo = new ArticleEntityRepo(storageConnectionString);
+
+            repo.SaveArticle(new ArticleEntity(Guid.NewGuid(), hit.Title, hit.Url, summary));
+
             return req.CreateResponse(HttpStatusCode.OK, summary);
         }
     }
