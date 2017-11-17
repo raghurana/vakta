@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -24,22 +25,27 @@ namespace Vakta.AzureFunctions
 
             var hits = await hackerNews.GetTopFiveHackerNews();
 
-            var tasks = hits.Select(hit => InvokeSummaryFunction(req, hit)).ToList();
+            foreach (var hit in hits)
+            {
+                var response = await InvokeSummaryFunction(req, hit);
 
-            var allResponses = await Task.WhenAll(tasks);
+               log.Info($"SummaryFunction Invoked and Result = {response.StatusCode}");
+            }
             
-            // TODO: Check all responses to be ok
-
             return req.CreateResponse(HttpStatusCode.OK);     
         }
 
-        private static Task<HttpResponseMessage> InvokeSummaryFunction(HttpRequestMessage request, Hit hit)
+        private static async Task<HttpResponseMessage> InvokeSummaryFunction(HttpRequestMessage request, Hit hit)
         {
-            return
+            var result = await 
                 request.InvokeAzureFunction(
                     "summary",
                     nameof(HelloWorldFunction),
                     hit);
+
+            await Task.Delay(SummaryFunction.InvocationDelaysSecs);
+
+            return result;
         }
     }
 }
