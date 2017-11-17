@@ -18,9 +18,11 @@ namespace Vakta.AzureFunctions
 
             var tableClient = storageAccount.CreateCloudTableClient();
 
-            // Create the CloudTable object that represents the "people" table.
+            // Create the CloudTable object that represents the "article" table.
             var table = tableClient.GetTableReference("article");
-            
+
+            table.CreateIfNotExists();
+
             // Create the TableOperation object that inserts the customer entity.
             var insertOperation = TableOperation.Insert(entity);
 

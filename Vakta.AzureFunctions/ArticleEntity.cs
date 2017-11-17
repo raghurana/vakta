@@ -5,10 +5,6 @@ namespace Vakta.AzureFunctions
 {
     public class ArticleEntity : TableEntity
     {
-        public Guid Id { get; set; }
-
-        public string Title { get; set; }
-
         public string Url { get; set; }
 
         public string Summary { get; set; }
@@ -16,10 +12,17 @@ namespace Vakta.AzureFunctions
         public ArticleEntity()
         {}
 
+        /// <summary>
+        /// Creates a new Article Row
+        /// </summary>
+        /// <param name="id">PartitionKey</param>
+        /// <param name="title">RowKey</param>
+        /// <param name="url"></param>
+        /// <param name="summary"></param>
         public ArticleEntity(Guid id, string title, string url, string summary)
         {
-            Id = id;
-            Title = title;
+            PartitionKey = id.ToString();
+            RowKey = title;
             Url = url;
             Summary = summary;
         }
