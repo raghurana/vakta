@@ -14,10 +14,11 @@ namespace Vakta.AzureFunctions
     public static class SummaryFunction
     {
         public const int InvocationDelaysSecs = 12;
+        public const string RouteName = "Summary";
 
         [FunctionName("SummaryFunction")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Summary")]
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = RouteName)]
             HttpRequestMessage req,
             TraceWriter log)
         {
@@ -27,15 +28,16 @@ namespace Vakta.AzureFunctions
 
             var summaryApiUrl = ConfigurationManager.AppSettings["SummaryApiUrl"];
             var summaryApiKey = ConfigurationManager.AppSettings["SummaryApiKey"];
+            var storageConnectionString = ConfigurationManager.AppSettings["StorageConnectionString"];
 
             var summaryService = new SummaryService(summaryApiUrl, summaryApiKey);
             var summary = summaryService.GetSummaryForHit(hit);
             
-            var storageConnectionString = ConfigurationManager.AppSettings["StorageConnectionString"];
-            
             var repo = new ArticleEntityRepo(storageConnectionString);
+            var article = new ArticleEntity(Guid.NewGuid(), hit.Title, hit.Url, summary);
+            repo.SaveArticle(article);
 
-            repo.SaveArticle(new ArticleEntity(Guid.NewGuid(), hit.Title, hit.Url, summary));
+            await req.InvokeAzureFunction($"TextToSpeech/id/{article.PartitionKey}/title/{article.RowKey}", RouteName);
 
             return req.CreateResponse(HttpStatusCode.OK, summary);
         }

@@ -39,7 +39,7 @@ namespace Vakta.AzureFunctions
         {
             var result = await 
                 request.InvokeAzureFunction(
-                    "summary",
+                    SummaryFunction.RouteName,
                     nameof(HelloWorldFunction),
                     hit);
 
