@@ -11,7 +11,7 @@ namespace Vakta.AzureFunctions
 {
     public static class HelloWorldFunction
     {
-        [FunctionName("HelloWorldFunction")]
+        [FunctionName(nameof(HelloWorldFunction))]
         public static async Task<HttpResponseMessage> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
             HttpRequestMessage req, 
@@ -23,6 +23,13 @@ namespace Vakta.AzureFunctions
 
             var results = await hackerNews.GetTopFiveHackerNews();
 
+            var baseUrl = req.RequestUri.AbsoluteUri.TrimEnd(nameof(HelloWorldFunction).ToCharArray());
+
+            using (var functionClient = new HttpClient())
+            {
+                var test = await functionClient.PostAsJsonAsync($"{baseUrl}summary", results.First());
+            }
+            
             return req.CreateResponse(HttpStatusCode.OK, results);     
         }
     }

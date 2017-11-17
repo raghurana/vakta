@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.Core", "Vakta.Core\Va
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.Tests", "Vakta.Tests\Vakta.Tests.csproj", "{00C86B5D-D8DE-4BB1-BCBB-5F6D44BD6ABE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vakta.AzureFunctions", "Vakta.AzureFunctions\Vakta.AzureFunctions.csproj", "{0700930F-CFD1-480D-A3C2-072C64E7DBE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vakta.AzureFunctions", "Vakta.AzureFunctions\Vakta.AzureFunctions.csproj", "{0700930F-CFD1-480D-A3C2-072C64E7DBE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

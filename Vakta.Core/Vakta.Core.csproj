@@ -59,6 +59,7 @@
     <Compile Include="HackerNewsService.cs" />
     <Compile Include="IHackerNewsApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SummaryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

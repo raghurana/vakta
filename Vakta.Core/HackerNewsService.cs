@@ -21,7 +21,7 @@ namespace Vakta.Core
             return
                 data
                     .Hits
-                    .OrderByDescending(h => h.CreatedAt)
+                    .OrderByDescending(h => h.Points)
                     .Take(5)
                     .ToList();
         }
